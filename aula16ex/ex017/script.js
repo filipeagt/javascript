@@ -2,7 +2,8 @@ var vetor = []
 var res = document.getElementById('res')
 
 function adicionar() {
-    let num = Number(document.getElementById('num').value)
+    let numForm = document.getElementById('num')
+    let num = Number(numForm.value)
     let lista = document.getElementById('lista')
     let item = document.createElement('option')
     
@@ -14,16 +15,19 @@ function adicionar() {
         item.innerHTML = `Valor ${num} adicionado`
         lista.appendChild(item)
     }
-    
+    numForm.value = ""
+    numForm.focus()
 }
 
 function analisar() {  
     if (vetor.length == 0) {
         alert('Adicione valores antes de finalizar!')
-    } else {  
-        vetor.sort()
+    } else {          
         let soma = 0
         let media = 0
+        
+        res.innerHTML=""
+        vetor.sort()
 
         for(i=0;i<vetor.length;i++) {
             soma += vetor[i]
