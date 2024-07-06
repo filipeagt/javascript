@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situação do aluno</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            font-size: .9em;
+            min-width: 100px;
+            height: 50px;
+            padding: 10px;
+        }
+
+        strong#aprovado {
+            background-color: lightgreen;
+            color: green;
+        }
+
+        strong#recuperacao {
+            background-color: rgb(247, 247, 144);
+            color: orange;
+        }
+
+        strong#reprovado {
+            background-color: coral;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <h1>Situação do aluno</h1>
+    <button onclick="calcula()">Entrar com as notas</button>
+    <section id="saida">
+        <p>Clique no botão acima para informar as notas do aluno.</p>
+    </section>    
+
+    <script>
+        function calcula() {
+            let nome = prompt('Qual é o nome do aluno?')
+            let n1 = Number(prompt(`Primeira nota de ${nome}.`))
+            let n2 = Number(prompt(`Segunda nota de ${nome}`))
+            let saida = document.getElementById('saida')
+            let media = (n1 + n2) / 2
+
+            saida.innerHTML = `<h2>Analisando a situação de ${nome}</h2>`
+            saida.innerHTML += `<p>Com as notas ${n1.toLocaleString()} e ${n2.toLocaleString()}, a <strong>média é ${media.toLocaleString()}</strong></p>`
+            if(media < 3) {
+                //Reprovado
+                saida.innerHTML += '<p>Com média abaixo de 3,0, o aluno está <strong id="reprovado">REPROVADO</strong></p>'
+            } else if(media <= 6) {
+                //Recuperação
+                saida.innerHTML += '<p>Com média entre 3,0 e 6,0, o aluno está em <strong id="recuperacao">RECUPERAÇÃO</strong></p>'
+            } else {
+                //Aprovado                
+                saida.innerHTML += '<p>Com média acima de 6,0, o aluno está <strong id="aprovado">APROVADO</strong></p>'
+            }
+        }
+    </script>
+</body>
+</html>
