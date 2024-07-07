@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Cartesiano</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: auto;            
+        }
+
+        td {
+            width: 1px;
+            height: 1px;
+            /*border: 1px solid black;*/
+        }
+
+        #m {
+            background-color: brown;
+        }
+
+        #a {
+            background-color: blue;
+        }
+
+        #v {
+            background-color: green;
+        }
+
+        #p {
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Plano Cartesiano</h1>
+    <table>
+        <tbody id="plano">
+
+        </tbody>
+    </table>
+
+    <script>      
+        let expressao = prompt('f(x) = ?')//Exemplo: x**2 -2*x -9
+        let plano = document.getElementById('plano')
+        for(i=100;i>=-100;i--) {
+            let linha = document.createElement('tr')
+            plano.appendChild(linha)
+            for(k=-100;k<=100;k++) {
+                let dado = document.createElement('td')
+                let x = (k/10)
+                let y = (i/10)
+                if(y.toFixed(1) == (eval(expressao)).toFixed(1)) dado.id = 'm'
+                //else if(y==x) dado.id = 'a'
+                //else if(y==-x) dado.id = 'v'
+                else if(i==0 || k==0) dado.id = 'p'
+                plano.appendChild(dado)
+            }
+            
+        }
+    </script>
+</body>
+</html>
