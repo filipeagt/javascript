@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagens</title>
+</head>
+<body>
+    <script>
+        function mudar(imagem) {
+            lampada.src = imagem
+        }
+    </script>
+    <h1>Imagens</h1>
+    <a onmouseover="mudar('lampada_acesa.jpg')" onmouseout="mudar('lampada_apagada.jpg')">
+        <img src="lampada_apagada.jpg" id="lampada">
+    </a>
+</body>
+</html>
