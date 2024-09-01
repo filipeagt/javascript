@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+</head>
+<body>
+    <script>
+        function somar() {
+            res.value = Number(v1.value) + Number(v2.value)
+        }
+    </script>
+    <h1>Calculadora</h1>
+    <form action="" method="get">
+        <p>
+            <label for="v1">Valor 1: </label>
+            <input type="text" name="v1" id="v1" value="0">
+        </p>
+        <p>
+            <label for="v2">Valor 2: </label>
+            <input type="text" name="v2" id="v2" value="0">
+        </p>
+        <p>
+            <input type="button" value="Calcular" onclick="somar()">
+        </p>
+        <p>
+            <label for="res">Resultado: </label>
+            <input type="text" name="res" id="res" readonly>
+        </p>        
+    </form>
+</body>
+</html>
