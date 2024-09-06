@@ -41,3 +41,8 @@ function separador() {
 function limpar() {
     res.value = "0"
 }
+
+function retornar() {
+    window.opener.valor.value = res.value
+    window.close()
+}

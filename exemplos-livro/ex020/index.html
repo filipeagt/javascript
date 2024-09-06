@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interação entre páginas</title>
+</head>
+<body>
+    <script>
+        function abrirCalc() {
+            //window.open('../ex019/index.html', 'Calculadora', toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, top=250, left=450, width=200, height=300)
+            window.open('../ex019/index.html','Calculadora')
+        }
+    </script>
+    <h1>Interação entre páginas</h1>
+    Digite um valor ou utilize a 
+    <input type="button" onclick="abrirCalc()" value="Calculadora">:
+    <input type="text" id="valor" value="0">
+</body>
+</html>
