@@ -6,3 +6,7 @@ table {
     padding: 3px;
     border-spacing: 0px;
 }
+
+input[type="button"] {
+    width: 28px;
+}
