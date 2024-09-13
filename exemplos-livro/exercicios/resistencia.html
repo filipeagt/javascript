@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lei de Ohm</title>
+</head>
+<body>
+    <h1>Lei de Ohm</h1>
+    Tensão: <input type="text" name="v" id="v" value="0">V<br>
+    Corrente: <input type="text" name="i" id="i" value="0">A<br>
+    Resistência: <input type="text" name="r" id="r" value="0" readonly>&ohm;<br>
+    <input type="button" value="Calcular" onclick="calcular()">
+    <script>
+        function calcular() {
+            let tensao = parseFloat(v.value)
+            let corrente = parseFloat(i.value)
+            let resistencia = tensao / corrente
+            r.value = resistencia
+        }
+    </script>
+</body>
+</html>
