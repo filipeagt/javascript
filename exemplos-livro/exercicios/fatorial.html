@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatorial</title>
+</head>
+<body>
+    <h1>Fatorial</h1>
+    Número: <input type="number" name="num" id="num" value="1" min="0">
+    <input type="button" value="Calcular" onclick="fatorial()">
+    <script>
+        function fatorial() {
+            let numero = parseInt(num.value)
+            let fat = 1
+            document.write(`${numero}! = `)
+            if (numero <= 1) {
+                document.write(`${fat}`)
+            } else {
+                document.write(`${numero}`)
+                while (numero > 1) {                
+                    fat *= numero
+                    numero--
+                    document.write(` x ${numero}`)
+                }
+                document.write(` = ${fat}`)
+            }
+        }
+    </script>
+</body>
+</html>
