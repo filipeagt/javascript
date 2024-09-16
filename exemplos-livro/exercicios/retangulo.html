@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retângulo ou quadrado</title>
+</head>
+<body>
+    <h1>Retângulo ou quadrado</h1>
+    Base: <input type="number" name="b" id="b" value="10"><br>
+    Altura: <input type="number" name="a" id="a" value="10"><br>
+    <input type="button" value="Enviar" onclick="calcular()">
+    <div id="resposta"></div>
+    <script>
+        function calcular() {
+            let base = parseFloat(b.value)
+            let altura = parseFloat(a.value)
+            let area = base * altura
+            if (base == altura) {
+                resposta.innerHTML = `<p>Tipo da figura: Quadrado</p>`
+            } else {
+                resposta.innerHTML = `<p>Tipo da figura: Retângulo</p>`
+            }
+            resposta.innerHTML += `<p>Área: ${area}</p>`
+            resposta.innerHTML += `<div style="width: ${base*10}px; height: ${altura*10}px; background-color: lightseagreen;"></div>`
+        }
+    </script>
+</body>
+</html>
