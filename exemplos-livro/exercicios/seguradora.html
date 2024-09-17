@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguradora</title>
+    <link rel="stylesheet" href="seguradora.css">
+</head>
+<body>
+    <h1>Seguradora</h1>
+    <form action="" method="get">
+        <h2>Segurado</h2>
+        <p><label for="nom">Nome: </label>
+        <input type="text" name="nom" id="nom"></p>
+        <p id="sex">Sexo:
+        <input type="radio" name="sex" id="f" value="F" required><label for="f">F</label>
+        <input type="radio" name="sex" id="m" value="M"><label for="m">M</label></p>
+        <p><label for="nasc">Ano de nascimento:</label>
+        <input type="number" name="nasc" id="nasc" min="1901" max="2001" required></p>
+        <h2>Veículo</h2>
+        <p><label for="marc">Marca:</label>
+        <input type="text" name="marc" id="marc"></p>
+        <p><label for="model">Modelo:</label>
+        <input type="text" name="model" id="model"></p>
+        <p><label for="fabric">Ano de fabricação:</label>
+        <input type="number" name="fabric" id="fabric" min="0" max="9999" required></p>
+        <p><label for="val">Valor: R$</label>
+        <input type="number" name="val" id="val" step="0.01" min="0" required></p>
+        <p><label for="bonus"><h2>Porcentagem de bônus</h2></label>
+        <input type="number" name="bonus" id="bonus" min="0" max="25" required>%</p>
+        <p><input type="submit" value="Calcular" onclick="calcular()"></p>        
+    </form>
+    <div id="res"></div>
+    <script src="seguradora.js"></script>
+</body>
+</html>
