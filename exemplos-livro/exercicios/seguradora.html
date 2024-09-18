@@ -8,8 +8,8 @@
 </head>
 <body>
     <h1>Seguradora</h1>
-    <form action="" method="get">
-        <h2>Segurado</h2>
+    <form>
+        <h2>Dados do Segurado</h2>
         <p><label for="nom">Nome: </label>
         <input type="text" name="nom" id="nom"></p>
         <p id="sex">Sexo:
@@ -26,11 +26,13 @@
         <input type="number" name="fabric" id="fabric" min="0" max="9999" required></p>
         <p><label for="val">Valor: R$</label>
         <input type="number" name="val" id="val" step="0.01" min="0" required></p>
-        <p><label for="bonus"><h2>Porcentagem de bônus</h2></label>
+        <h2>Bônus</h2>
+        <p><label for="bonus">Percentual:</label>
         <input type="number" name="bonus" id="bonus" min="0" max="25" required>%</p>
-        <p><input type="submit" value="Calcular" onclick="calcular()"></p>        
+        <p><input type="button" value="Calcular" onclick="calcular()"></p>    
+        <div id="res">Valor da apólice: </div>    
     </form>
-    <div id="res"></div>
+    
     <script src="seguradora.js"></script>
 </body>
 </html>
