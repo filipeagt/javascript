@@ -8,7 +8,7 @@
 
 //module.exports = {somar, subtrair}
 
-export const calculadora = {
+const calculadora = {
     somar: function (a,b) {
         return a+b;
     },
@@ -16,8 +16,5 @@ export const calculadora = {
         return a-b;
     }
 }
-//export {calculadora};
 
-export function multiplicar(a,b) {
-    return a*b;
-}
+module.exports = calculadora;

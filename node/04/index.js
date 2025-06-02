@@ -15,7 +15,8 @@ Terceiros -> Third Party
 
 */
 //console.log(process);
-const calc = require('./modules/calculadora');
+import {calculadora, multiplicar} from './modules/calculadora.js'; //usar .js nesse caso
 
-console.log(calc.somar(5, 4));
-console.log(calc.subtrair(5, 4));
+console.log(calculadora.somar(5, 4));
+console.log(calculadora.subtrair(5, 4));
+console.log(multiplicar(5,4));
