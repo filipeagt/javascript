@@ -6,6 +6,7 @@ const PORT =  process.env.PORT || 3000;
 
 const server = http.createServer((req, res)=>{
     let url = req.url;
+
     if (url === '/') {
         res.statusCode = 200;
         res.setHeader('Content-type', 'text/html; charset=utf-8');
@@ -16,6 +17,18 @@ const server = http.createServer((req, res)=>{
         res.statusCode = 200;
         res.setHeader('Content-type', 'text/html; charset=utf-8');
         res.end('<h1>Página Sobre<h1>');
+    }
+
+    if (url === '/contato') {
+        res.statusCode = 200;
+        res.setHeader('Content-type', 'text/html; charset=utf-8');
+        res.end('<h1>Página Contato<h1>');
+    }
+
+    if (url === '/teste') {
+        res.statusCode = 200;
+        res.setHeader('Content-type', 'text/html; charset=utf-8');
+        res.end('<h1>Página Teste<h1>');
     }
 })
 
