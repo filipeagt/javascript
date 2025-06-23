@@ -2,6 +2,7 @@ const express =  require('express');
 const app = express();
 const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const PORT = process.env.PORT || 3000;
 
 //Configuração do handlebars
@@ -14,7 +15,25 @@ app.set('view engine', 'hbs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:false}));
 
+//Configuração das sessions
+app.use(session({
+    secret: 'CriarUmaChaveQualquer1234!',
+    resave: false,
+    saveUninitialized: true
+}));
+
 app.get('/',(req,res)=>{
+    if(req.session.errors) {
+        var arrayErros = req.session.errors;
+        req.session.errors = "";
+        return res.render('index', {NavActiveCad:true, error:arrayErros})
+    }
+
+    if(req.session.success) {
+        req.session.success = false;
+        return res.render('index', {NavActiveCad:true, MsgSuccess:true})
+    }
+
     res.render('index',{NavActiveCad:true});
 });
 
@@ -27,10 +46,55 @@ app.get('/editar',(req,res)=>{
 });
 
 app.post('/cad',(req,res)=>{
-    res.send(req.body.email);
-    //Validar os valores que vieram do formulário
-    //Tratar esses valores
-    //Enviar esses valores para um banco de dados
+    //Valores vindos do formulário
+    var nome =  req.body.nome;
+    var email = req.body.email;
+
+    //Array que vai conter os erros
+    const erros = [];
+
+    //Remover os espaços em branco antes e depois
+    nome = nome.trim();
+    email = email.trim();
+
+    //Limpar o nome de caracteres especiais (Apenas letras)
+    nome = nome.replace(/[^A-zÀ-ú\s]/gi,'');
+    nome =  nome.trim();
+    console.log(nome);
+
+    //Verificar se está vazio ou não o campo nome
+    if (nome == '' || typeof nome == undefined || nome == null) {
+        erros.push({mensagem: "Campo nome não pode ser vazio!"});
+    }
+
+    //Verificar se o campo nome é válido (Apenas letras)
+    if(!/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$/.test(nome)) {
+        erros.push({mensagem: "Nome inválido!"});
+    }
+
+    //Verificar se está vazio ou não o campo email
+    if (email == '' || typeof email == undefined || email == null) {
+        erros.push({mensagem: "Campo e-mail não pode ser vazio!"});
+    }
+
+    //Verificar se o email é válido
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        erros.push({mensagem: "E-mail inválido!"});
+    }
+
+    if (erros.length > 0) {
+        console.log(erros);
+        req.session.errors = erros;
+        req.session.success = false;
+        return res.redirect('/');
+    }
+
+    //Sucesso nenhum erro
+    //Salvar no banco de dados
+    console.log('Validação realizada com sucesso!');
+    req.session.success = true;
+    return res.redirect('/');
+
 });
 
 app.listen(PORT,()=>{
