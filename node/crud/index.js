@@ -2,7 +2,7 @@ const express =  require('express');
 const app = express();
 const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const session = require('express-session');
+const session = require('express-session'); //npm i express-session --save
 const PORT = process.env.PORT || 3000;
 
 //Configuração do handlebars
@@ -14,6 +14,9 @@ app.set('view engine', 'hbs');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:false}));
+
+//Importar model usuários
+const Usuario = require('./models/Usuario');
 
 //Configuração das sessions
 app.use(session({
