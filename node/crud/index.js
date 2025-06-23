@@ -187,6 +187,18 @@ app.post('/update', (req,res)=>{
     });
 });
 
+app.post('/del',(req,res)=>{
+    Usuario.destroy({
+        where:{
+            id: req.body.id
+        }
+    }).then((retorno) => {
+        return res.redirect('/users');
+    }).catch((err) => {
+        console.log(err);
+    });
+});
+
 app.listen(PORT,()=>{
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
