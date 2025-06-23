@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 //Importar model usuários
 const Usuario = require('./models/Usuario');
+const { where } = require('sequelize');
 
 //Configuração das sessions
 app.use(session({
@@ -54,8 +55,15 @@ app.get('/users',(req,res)=>{
     //res.render('users',{NavActiveUsers:true});
 });
 
-app.get('/editar',(req,res)=>{
-    res.render('editar');
+app.post('/editar',(req,res)=>{
+    var id = req.body.id;
+    Usuario.findByPk(id).then((dados) => {
+        return res.render('editar', {error:false, id:dados.id, nome:dados.nome, email:dados.email});
+    }).catch((err) => {
+        console.log(err);
+        return res.render('editar', {error: true, problema: 'Não é possível editar este registro!'});
+    });
+    //res.render('editar');
 });
 
 app.post('/cad',(req,res)=>{
@@ -115,6 +123,68 @@ app.post('/cad',(req,res)=>{
         console.log(`Ops, houve um erro: ${erro}`);
     });    
 
+});
+
+app.post('/update', (req,res)=>{
+    //Valores vindos do formulário
+    var nome =  req.body.nome;
+    var email = req.body.email;
+
+    //Array que vai conter os erros
+    const erros = [];
+
+    //Remover os espaços em branco antes e depois
+    nome = nome.trim();
+    email = email.trim();
+
+    //Limpar o nome de caracteres especiais (Apenas letras)
+    nome = nome.replace(/[^A-zÀ-ú\s]/gi,'');
+    nome =  nome.trim();
+    console.log(nome);
+
+    //Verificar se está vazio ou não o campo nome
+    if (nome == '' || typeof nome == undefined || nome == null) {
+        erros.push({mensagem: "Campo nome não pode ser vazio!"});
+    }
+
+    //Verificar se o campo nome é válido (Apenas letras)
+    if(!/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$/.test(nome)) {
+        erros.push({mensagem: "Nome inválido!"});
+    }
+
+    //Verificar se está vazio ou não o campo email
+    if (email == '' || typeof email == undefined || email == null) {
+        erros.push({mensagem: "Campo e-mail não pode ser vazio!"});
+    }
+
+    //Verificar se o email é válido
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        erros.push({mensagem: "E-mail inválido!"});
+    }
+
+    if (erros.length > 0) {
+        console.log(erros);
+        return res.status(400).send({status:400, erro: erros});
+    }
+
+    //Sucesso nenhum erro
+    //Atualizar registros no banco de dados
+    Usuario.update(
+        {
+            nome: nome,
+            email: email.toLowerCase()
+        },
+        {
+            where: {
+                id: req.body.id
+            }
+        }
+    ).then((resultado) => {
+        console.log(resultado);
+        return res.redirect('/users');
+    }).catch((err) => {
+        console.log(err);
+    });
 });
 
 app.listen(PORT,()=>{
