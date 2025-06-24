@@ -35,6 +35,8 @@ ReactDOM.render(
     document.getElementById("root")
 );
 */
+
+/*
 function relogio() {
     const elemento = (
         <div>
@@ -46,3 +48,32 @@ function relogio() {
 }
 
 setInterval(relogio, 1000);
+*/
+
+function BemVindo(props) {
+    return <h1>Olá, {props.nome?props.nome:'Mundo'}!</h1>
+}
+
+function Conteudo(props) {
+    return (
+        <div>
+            <h2>Isso é outro componente</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est amet tempore, deleniti rerum ullam officia repudiandae voluptatem dolore numquam! Soluta saepe ab nam expedita veniam possimus aliquam cumque quisquam labore!</p>
+        </div>
+    );
+}
+
+function App() {
+    return(
+        <div>
+            <BemVindo nome="Filipe"/>
+            <BemVindo/>
+            <Conteudo/>
+        </div> 
+    );
+}
+
+ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+);
