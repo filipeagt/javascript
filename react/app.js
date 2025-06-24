@@ -8,6 +8,7 @@ document.getElementById("root").append(h1);
 console.log(h1);
 */
 
+/*
 //JSX
 //Declarativo
 
@@ -33,3 +34,15 @@ ReactDOM.render(
     pagina,
     document.getElementById("root")
 );
+*/
+function relogio() {
+    const elemento = (
+        <div>
+            <h1>Olá, Mundo!</h1>
+            <h2>Agora é {new Date().toLocaleTimeString()}.</h2>
+        </div>
+    );
+    ReactDOM.render(elemento, document.getElementById('root'));
+}
+
+setInterval(relogio, 1000);
