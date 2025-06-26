@@ -98,6 +98,27 @@ function Contador(props) {
 
     //Criar um state
     const [count, setCount] = React.useState(0);
+    const [nome, setNome] = React.useState('');
+
+    //Efeito colateral depois de renderizado
+    React.useEffect(()=>{
+        console.log('Ativou efeito colateral');
+    });
+    //Efeito colateral somente para count
+    React.useEffect(()=>{
+        document.title = 'Contador: ' + count;
+        console.log('Efeito colateral count');
+    },[count]);
+
+    //Efeito colateral somente para nome
+    React.useEffect(()=>{
+        console.log('Efeito colateral nome');
+    },[nome]);
+
+    //Efeito colateral somente uma vez (usado para consumo de api)
+    React.useEffect(()=>{
+        console.log('Efeito colateral apenas na montagem');
+    },[]);
 
     function add() {
         setCount(count + 1);
@@ -107,15 +128,23 @@ function Contador(props) {
         setCount(count - 1);
     }
 
+    function trocaNome() {
+        setNome('Filipe');
+    }
+
+    console.log('Renderizado componente');
+
     return (
         <div className="p-5 mb-4 bg-body-tertiary rounded-3">
             <div className="container-fluid py-5">
+                <h1 className="display-5 fw-bold">Nome: {nome}</h1>
                 <h1 className="display-5 fw-bold">Contador: {count}</h1>
                 <p className="col-md-8 fs-4">Aprendendo State (Estado)</p>
                 <div className="row gap-2">
                     <button onClick={sub} className="col btn btn-danger btn-lg" type="button">Sub -</button>
                     <button onClick={add} className="col btn btn-success btn-lg" type="button">Add +</button>
                 </div>
+                <button onClick={trocaNome} className="col btn btn-primary btn-lg" type="button">TRocar Nome</button>
             </div>
         </div>
     );
