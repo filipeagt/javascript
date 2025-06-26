@@ -3,7 +3,11 @@ function App() {
         <main>
             <div className="container py-4">
                 <Header />
+                <Contador />
+                <Contador />
+                <Contador />
                 <CustomJumbotron texto="Isso é um texto!" />
+                <CustomJumbotron />
                 <DoisJumbotrons />
                 <Footer />
             </div>

@@ -33,19 +33,60 @@ function CustomJumbotron(props) {
 class CustomJumbotron extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            nome: "Filipe"
+        }
+    }
+
+    trocaNome = ()=> {
+        this.setState(function(prevState) {
+            return {nome: prevState.nome + ' Almeida'}
+        })
     }
 
     render() {
         return (
             <div className="p-5 mb-4 bg-body-tertiary rounded-3">
                 <div className="container-fluid py-5">
-                    <h1 className="display-5 fw-bold">{this.props.texto}</h1>
-                    <p className="col-md-8 fs-4">Using
-                        a series of utilities, you can create this jumbotron, just like the one
-                        in previous versions of Bootstrap. Check out the examples below for how
-                        you can remix and restyle it to your liking.
-                    </p>
-                    <button className="btn btn-primary btn-lg" type="button">Example button</button>
+                    <h1 className="display-5 fw-bold">{this.state.nome}</h1>
+                    <p className="col-md-8 fs-4">Aprendendo State (Estado)</p>
+                    <button onClick={this.trocaNome} className="btn btn-primary btn-lg" type="button">Trocar Nome</button>
+                </div>
+            </div>
+        );
+    }
+}
+
+class Contador extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            cont: 0
+        }
+    }
+
+    add = ()=> {
+        this.setState(function(prevState) {
+            return {cont: prevState.cont + 1}
+        })
+    }
+
+    sub = ()=> {
+        this.setState(function(prevState) {
+            return {cont: prevState.cont - 1}
+        })
+    }
+
+    render() {
+        return (
+            <div className="p-5 mb-4 bg-body-tertiary rounded-3">
+                <div className="container-fluid py-5">
+                    <h1 className="display-5 fw-bold">Contador: {this.state.cont}</h1>
+                    <p className="col-md-8 fs-4">Aprendendo State (Estado)</p>
+                    <div className="row gap-2">
+                        <button onClick={this.sub} className="col btn btn-danger btn-lg" type="button">Sub -</button>
+                        <button onClick={this.add} className="col btn btn-success btn-lg" type="button">Add +</button>
+                    </div>
                 </div>
             </div>
         );
