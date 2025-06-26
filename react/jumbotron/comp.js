@@ -57,7 +57,7 @@ class CustomJumbotron extends React.Component {
     }
 }
 
-class Contador extends React.Component {
+/*class Contador extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -91,6 +91,34 @@ class Contador extends React.Component {
             </div>
         );
     }
+}*/
+
+//Componente funcional
+function Contador(props) {
+
+    //Criar um state
+    const [count, setCount] = React.useState(0);
+
+    function add() {
+        setCount(count + 1);
+    }
+
+    function sub() {
+        setCount(count - 1);
+    }
+
+    return (
+        <div className="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div className="container-fluid py-5">
+                <h1 className="display-5 fw-bold">Contador: {count}</h1>
+                <p className="col-md-8 fs-4">Aprendendo State (Estado)</p>
+                <div className="row gap-2">
+                    <button onClick={sub} className="col btn btn-danger btn-lg" type="button">Sub -</button>
+                    <button onClick={add} className="col btn btn-success btn-lg" type="button">Add +</button>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 function Jumbotron(props) {
