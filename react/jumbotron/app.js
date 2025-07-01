@@ -3,7 +3,7 @@ function App() {
         <main>
             <div className="container py-4">
                 <Header />
-                <Contador />
+                <Contador btnNome={false} />
                 <CustomJumbotron />
                 <DoisJumbotrons />
                 <Footer />

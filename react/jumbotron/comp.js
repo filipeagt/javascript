@@ -96,9 +96,12 @@ class CustomJumbotron extends React.Component {
 //Componente funcional
 function Contador(props) {
 
+    let tema = props.tema;
+    let btnNome = props.btnNome;
+
     //Criar um state
     const [count, setCount] = React.useState(0);
-    const [nome, setNome] = React.useState('');
+    const [nome, setNome] = React.useState(btnNome);
 
     //Efeito colateral depois de renderizado
     React.useEffect(()=>{
@@ -108,6 +111,9 @@ function Contador(props) {
     React.useEffect(()=>{
         document.title = 'Contador: ' + count;
         console.log('Efeito colateral count');
+        if(count >= 5) {
+            setNome('Filipe');
+        }
     },[count]);
 
     //Efeito colateral somente para nome
@@ -133,12 +139,27 @@ function Contador(props) {
     }
 
     console.log('Renderizado componente');
-
+/*
+    if(count > 10) {
+        return (
+            <div className="p-5 mb-4 bg-ligth rounded-3">
+                <div className="container-fluid py-5">
+                    <Explodiu />
+                </div>
+            </div>
+        );
+    }
+*/  
     return (
         <div className="p-5 mb-4 bg-body-tertiary rounded-3">
             <div className="container-fluid py-5">
-                <h1 className="display-5 fw-bold">Nome: {nome}</h1>
-                <h1 className="display-5 fw-bold">Contador: {count}</h1>
+                {
+                    nome && <h1 className="display-5 fw-bold">Nome: {nome}</h1>
+                }
+                
+                {
+                    count > 10 ? <Explodiu /> : <h1 className="display-5 fw-bold">Contador: {count}</h1>
+                }                
                 <p className="col-md-8 fs-4">Aprendendo State (Estado)</p>
                 <div className="row gap-2">
                     <button onClick={sub} className="col btn btn-danger btn-lg" type="button">Sub -</button>
@@ -147,6 +168,13 @@ function Contador(props) {
                 <button onClick={trocaNome} className="col btn btn-primary btn-lg" type="button">TRocar Nome</button>
             </div>
         </div>
+    );
+    
+}
+
+function Explodiu(props) {
+    return (
+        <h1 className="text-danger">EXPLODIU!</h1>
     );
 }
 
