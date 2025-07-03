@@ -1,0 +1,19 @@
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background: #6760f0;
+    width: 100%;
+    height: 60px;
+}
+
+.subnav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background: #8682c7;
+    width: 100%;
+    height: 30px;
+}
