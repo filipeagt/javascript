@@ -10,12 +10,14 @@ import './App.css'
 
 //Importar Componentes
 import Navbar from './components/Navbar'
+import Categorias from './components/Categorias'
 
 function App() {
 
   return (
     <div>
       <Navbar />
+      <Categorias />
     </div>
   )
 }
