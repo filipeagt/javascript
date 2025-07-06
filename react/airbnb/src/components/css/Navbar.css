@@ -9,3 +9,46 @@
 .logo {
     max-width: 105px;
 }
+
+.link-especial {
+    text-decoration: none;
+    color: #161616;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 8px;
+}
+
+.link-especial:hover {
+    background-color: #eeeeee;
+    border-radius: 20px;
+}
+
+.icon-nav {
+    width: 45px;
+    color: #161616;
+    text-decoration: none;
+    text-align: center;
+    padding: 6px;
+}
+
+.icon-nav:hover {
+    background-color: #eeeeee;
+    border-radius: 50%;
+}
+
+.mdi-web {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.button-login {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: gray;
+    border: 1px solid gray;
+    width: 80px;
+    border-radius: 30px;
+}
+
+
