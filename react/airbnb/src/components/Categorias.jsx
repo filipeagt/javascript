@@ -55,7 +55,10 @@ export default function Categorias() {
                     </Swiper>
                 </div>
                 <div className="col-sm-1">
-                    Aqui vai filtro
+                    <button className='btn btn-filtro d-flex float-end' data-bs-toggle='modal' data-bs-target='#filterModal' >
+                        <i className="mdi mdi-filter-variant me-2"></i>
+                        Filtros
+                    </button>
                 </div>
             </div>
         </div>

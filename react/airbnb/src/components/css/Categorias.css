@@ -87,3 +87,7 @@
 .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
   opacity: 0;
 }
+
+.btn-filtro, .btn-filtro:hover {
+  border: 1px solid gray;
+}
