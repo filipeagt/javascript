@@ -1,40 +1,57 @@
 import React from 'react';
+import { useState } from 'react';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-// import required modules
-import { Pagination } from 'swiper/modules';
+import 'swiper/css/navigation';
 
 //Importar CSS do componente
 import './css/Categorias.css'
 
+//Importar os dados de categorias
+import { categorias } from '../../backend/dados';
+
 export default function Categorias() {
+
+    const [idClicado, setIdClicado] = useState(1);
+
+    const handleClick = (e, id)=>{
+        console.log(`A categoria clicada atual é: ${id}`);
+        setIdClicado(id);
+    }
+
     return (
-        <div className='container-fluid border border-danger'>
-            <div className="container-airbnb border border-info row">
+        <div className='pt-2 container-fluid d-flex align-items-center justify-content-between'>
+            <div className="container-airbnb d-flex align-items-center row">
                 <div className="col-sm-11">
                     <Swiper
-                        slidesPerView={3}
-                        spaceBetween={30}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        modules={[Pagination]}
+                        slidesPerView={14}
+                        slidesPerGroup={13}
+                        spaceBetween={7}
+                        pagination={false}
+                        navigation={true}
+                        modules={[Pagination, Navigation]}                        
                         className="mySwiper"
                     >
-                        <SwiperSlide>Slide 1</SwiperSlide>
-                        <SwiperSlide>Slide 2</SwiperSlide>
-                        <SwiperSlide>Slide 3</SwiperSlide>
-                        <SwiperSlide>Slide 4</SwiperSlide>
-                        <SwiperSlide>Slide 5</SwiperSlide>
-                        <SwiperSlide>Slide 6</SwiperSlide>
-                        <SwiperSlide>Slide 7</SwiperSlide>
-                        <SwiperSlide>Slide 8</SwiperSlide>
-                        <SwiperSlide>Slide 9</SwiperSlide>
+                        {
+                            categorias.map((dados, index)=>(
+                                <SwiperSlide 
+                                key={dados.id} 
+                                virtualIndex={index} 
+                                className={dados.id === idClicado ? 'active' : ''}
+                                onClick={(e)=>handleClick(e, dados.id)}
+                                >
+                                    <img className='mb-2' src={dados.imagem} />
+                                    <span>{dados.titulo}</span>
+                                </SwiperSlide>
+                            ))
+                        }
                     </Swiper>
                 </div>
                 <div className="col-sm-1">

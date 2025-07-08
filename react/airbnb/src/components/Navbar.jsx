@@ -17,7 +17,7 @@ export default function Navbar() {
                             <a className="button-login dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="fs-5 mdi mdi-menu ps-2 me-1"></i>
                                 <i className="fs-2 position-relative mdi mdi-account-circle pe-2">
-                                    <span class="position-absolute top-0 start-50 badge border border-light rounded-circle bg-danger p-2"><span class="visually-hidden">unread messages</span></span>
+                                    <span className="position-absolute top-0 start-50 badge border border-light rounded-circle bg-danger p-2"><span className="visually-hidden">unread messages</span></span>
                                 </i>
                             </a>
 
