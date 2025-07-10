@@ -1,4 +1,15 @@
 import React from 'react';
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
 //Importar css do Card
 import './css/Card.css';
 
@@ -19,14 +30,27 @@ export default function Card() {
             <div className="container-airbnb row">
                 {
                     acomodacoes.map((acomodacao, index) => (
-                        <div key={acomodacao.id} className="col-xxl-2">
-                            <img src={acomodacao.imagens[0]} className='img-fluid' />
+                        <div key={acomodacao.id} className="mt-4 col-xxl-2">
+                            <Swiper
+                                className='img-content'
+                                pagination={true}
+                                navigation={true}
+                                modules={[Pagination, Navigation]}
+                            >
+                                {
+                                    acomodacao.imagens.map((imagem, index) => (
+                                        <SwiperSlide className='swiper-img' key={index} >
+                                            <img className='img-fluid card-image' src={imagem} />
+                                        </SwiperSlide>
+                                    ))
+                                }
+                            </Swiper>
                             <p className='d-flex justify-content-between mt-3 mb-0'>
-                                <span style={{ border: '1px solid red', display: 'block', maxWidth: '160px' }} className='fw-bold text-truncate'>{acomodacao.cidade}, {acomodacao.pais}</span>
+                                <span style={{ display: 'block', maxWidth: '160px' }} className='fw-bold text-truncate'>{acomodacao.cidade}, {acomodacao.pais}</span>
                                 <span><i className="mdi mdi-star"></i>{acomodacao.nota}</span>
                             </p>
-                            <p className='text-muted my-0'>{getRandonInt(10,800)} km de Distância</p>
-                            <p className='text-muted'>{getRandonInt(1,31)} de jan - {getRandonInt(1,28)} de fev</p>
+                            <p className='text-muted my-0'>{getRandonInt(10, 800)} km de Distância</p>
+                            <p className='text-muted'>{getRandonInt(1, 31)} de jan - {getRandonInt(1, 28)} de fev</p>
                             <p className='fw-bold'>R$ {acomodacao.preco.toLocaleString('pt-BR')} noite</p>
                         </div>
                     ))
