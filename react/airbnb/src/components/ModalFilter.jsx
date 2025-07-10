@@ -1,6 +1,8 @@
 import React from 'react';
 import PriceSlider from './PriceSlider';
 import ButtonGroup from './ButtonGroup';
+import CardGroup from './CardGroup';
+import './css/ModalFilter.css';
 
 export default function ModalFilter() {
     return (
@@ -58,10 +60,19 @@ export default function ModalFilter() {
                             <p className='mt-3 px-1'>Banheiros</p>
                             <ButtonGroup buttons={["Qualquer um", '1', '2', '3', '4', '5', '6', '7', '8+']} />
                         </section>
+                        <section className="px-2 mb-5">
+                            <span className="fs-4 fw-bold">Tipo de Propriedadde</span>
+                            <CardGroup options={[
+                                {icon: 'mdi mdi-home-outline', text: 'Casa'},
+                                {icon: 'mdi mdi-city-variant-outline', text: 'Apartamento'},
+                                {icon: 'mdi mdi-home-import-outline', text: 'Casa de hóspedes'},
+                                {icon: 'mdi mdi-office-building-outline', text: 'Hotel'}
+                            ]} />
+                        </section>
                     </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
+                    <div className="d-flex justify-content-between modal-footer">
+                        <a href="#" className='ps-2 link-dark fw-bold'>Remover Filtros</a>
+                        <button type="button" className="fw-bold px-4 py-3 btn btn-dark" data-bs-dismiss="modal">Mostrar X acomodações</button>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,32 @@
+.cardGroup {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: space-between;
+    padding-left: 15px;
+    height: 130px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.cardGroup:hover {
+    border: 1px solid #161616;
+}
+
+.cardGroup i {
+    font-size: 2.5rem;
+    padding-top: 10px;
+    margin-bottom: 15px;
+}
+
+.cardGroup p {
+    max-width: 140px;
+    font-weight: 600;
+}
+
+.cardGroup.active {
+    background-color: #161616;
+    color: white;
+    border: 1px solid #161616;
+}
