@@ -25,12 +25,17 @@ export default function Card() {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
+    function animar(e) {
+        e.target.classList.toggle('animate');
+    }
+
     return (
         <div className='container-fluid'>
             <div className="container-airbnb row">
                 {
                     acomodacoes.map((acomodacao, index) => (
-                        <div key={acomodacao.id} className="mt-4 col-xxl-2">
+                        <div key={acomodacao.id} className="position-relative mt-4 col-xxl-2">
+                            <div onClick={animar} className="heart-animation position-absolute top-0 end-0"></div>
                             <Swiper
                                 className='img-content'
                                 pagination={true}

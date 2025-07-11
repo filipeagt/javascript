@@ -7,10 +7,10 @@ export default function Navbar() {
         <div>
             <nav className="nav-topo">
                 <div className="container-airbnb">
-                    <div className="d-flex align-items-center col-sm-6">
+                    <div className="col-12 col-sm-6 d-flex justify-content-center justify-content-sm-start align-items-center">
                         <img src={logo} alt="Logo do site" className="logo" />
                     </div>
-                    <div className="d-flex align-items-center justify-content-end col-sm-6">
+                    <div className="d-none d-sm-flex col-sm-6 align-items-center align-items-center justify-content-end">
                         <a href="#" className='link-especial'>Seja um anfitrião</a>
                         <a href="#" className='icon-nav mx-2'><i className='mdi mdi-web'></i></a>
                         <div className="dropdown">
