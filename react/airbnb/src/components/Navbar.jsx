@@ -7,13 +7,13 @@ export default function Navbar() {
         <div>
             <nav className="nav-topo">
                 <div className="container-airbnb">
-                    <div className="col-12 col-sm-6 d-flex justify-content-center justify-content-sm-start align-items-center">
+                    <div className="ps-sm-4 col-12 col-sm-6 d-flex justify-content-center justify-content-sm-start align-items-center">
                         <img src={logo} alt="Logo do site" className="logo" />
                     </div>
                     <div className="d-none d-sm-flex col-sm-6 align-items-center align-items-center justify-content-end">
                         <a href="#" className='link-especial'>Seja um anfitrião</a>
                         <a href="#" className='icon-nav mx-2'><i className='mdi mdi-web'></i></a>
-                        <div className="dropdown">
+                        <div className="dropdown mx-3">
                             <a className="button-login dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="fs-5 mdi mdi-menu ps-2 me-1"></i>
                                 <i className="fs-2 position-relative mdi mdi-account-circle pe-2">

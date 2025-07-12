@@ -6,3 +6,10 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+@media screen and (max-width: 1200px) {
+    .container-airbnb {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}

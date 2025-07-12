@@ -91,3 +91,9 @@
 .btn-filtro, .btn-filtro:hover {
   border: 1px solid gray;
 }
+
+@media screen and (max-width: 575px) {
+  .swiper-button-prev, .swiper-button-next {
+    display: none !important;
+  }
+}

@@ -31,9 +31,52 @@ export default function Categorias() {
             <div className="container-airbnb d-flex align-items-center row">
                 <div className="col-sm-11">
                     <Swiper
-                        slidesPerView={14}
-                        slidesPerGroup={13}
-                        spaceBetween={7}
+                        // slidesPerView={14}
+                        // slidesPerGroup={13}
+                        // spaceBetween={7}
+                        breakpoints={{
+                            100: {
+                                slidesPerView: 3,
+                                slidesPerGroup: 1,
+                                spaceBetween: 1
+                            },
+                            //Janela > 576 (sm)
+                            576: {
+                                slidesPerView: 4,
+                                slidesPerGroup: 4,
+                                spaceBetween: 4
+                            },
+                            //Janela > 768 (md)
+                            768: {
+                                slidesPerView: 6,
+                                slidesPerGroup: 6,
+                                spaceBetween: 7
+                            },
+                            //Janela > 992 (lg)
+                            992: {
+                                slidesPerView: 8,
+                                slidesPerGroup: 8,
+                                spaceBetween: 7
+                            },
+                            //Janela > 1200 (xl)
+                            1200: {
+                                slidesPerView: 8,
+                                slidesPerGroup: 8,
+                                spaceBetween: 7
+                            },
+                            //Janela > 1400
+                            1400: {
+                                slidesPerView: 10,
+                                slidesPerGroup: 10,
+                                spaceBetween: 7
+                            },
+                            //Janela >= 1600 (xxl)
+                            1600: {
+                                slidesPerView: 14,
+                                slidesPerGroup: 13,
+                                spaceBetween: 7
+                            }
+                        }}
                         pagination={false}
                         navigation={true}
                         modules={[Pagination, Navigation]}                        
