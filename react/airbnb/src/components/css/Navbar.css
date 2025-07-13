@@ -51,4 +51,22 @@
     border-radius: 30px;
 }
 
+nav#mobile {
+    height: 70px;
+}
 
+.nav-icon {
+    color: #ccc;
+    text-decoration: none;
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+.nav-icon:focus {
+    color: #858585;
+}
+
+.nav-icon.active {
+    color: #ff5a5f;
+    border-top: 3px solid #ff5a5f;
+}

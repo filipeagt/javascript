@@ -5,7 +5,7 @@ import logo from '../assets/airbnb.svg'
 export default function Navbar() {
     return (
         <div>
-            <nav className="nav-topo">
+            <nav style={{position: 'fixed', top: 0, zIndex: 999}} className="nav-topo">
                 <div className="container-airbnb">
                     <div className="ps-sm-4 col-12 col-sm-6 d-flex justify-content-center justify-content-sm-start align-items-center">
                         <img src={logo} alt="Logo do site" className="logo" />
@@ -32,6 +32,20 @@ export default function Navbar() {
                         </div>
                     </div>
                 </div>
+            </nav>
+            <nav id='mobile' className='d-sm-none fs-3 bg-white fixed-bottom d-flex align-items-center justify-content-around'>
+                <a href="#" className='d-flex flex-column text-center nav-icon active'>
+                    <i className="mdi mdi-compass"></i>
+                    <span>Exploarar</span>
+                </a>
+                <a href="#" className='d-flex flex-column text-center nav-icon'>
+                    <i className="mdi mdi-heart"></i>
+                    <span>Favoritos</span>
+                </a>
+                <a href="#" className='d-flex flex-column text-center nav-icon'>
+                    <i className="mdi mdi-account-circle"></i>
+                    <span>Usuário</span>
+                </a>
             </nav>
         </div>
     )

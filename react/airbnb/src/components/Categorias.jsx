@@ -27,7 +27,7 @@ export default function Categorias() {
     }
 
     return (
-        <div className='pt-2 container-fluid d-flex align-items-center justify-content-between'>
+        <div style={{marginTop: '80px', position: 'fixed', top: '0px', zIndex: 998}} className='bg-white pt-2 container-fluid d-flex align-items-center justify-content-between'>
             <div className="container-airbnb d-flex align-items-center row">
                 <div className="col-sm-11">
                     <Swiper
@@ -98,7 +98,10 @@ export default function Categorias() {
                     </Swiper>
                 </div>
                 <div className="col-sm-1">
-                    <button className='btn btn-filtro d-flex float-end' data-bs-toggle='modal' data-bs-target='#filterModal' >
+                    <button className='d-none w-100 btn btn-filtro d-md-flex d-lg-none justify-content-center float-end' data-bs-toggle='modal' data-bs-target='#filterModal' >
+                        <i className="mdi mdi-filter-variant me-2"></i>
+                    </button>
+                    <button className='d-none btn btn-filtro d-lg-flex float-end' data-bs-toggle='modal' data-bs-target='#filterModal' >
                         <i className="mdi mdi-filter-variant me-2"></i>
                         Filtros
                     </button>

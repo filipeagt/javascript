@@ -34,7 +34,7 @@ export default function Card() {
             <div className="container-airbnb row">
                 {
                     acomodacoes.map((acomodacao, index) => (
-                        <div key={acomodacao.id} className="position-relative mt-4 col-xxl-2">
+                        <div key={acomodacao.id} className="position-relative mt-4 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
                             <div onClick={animar} className="heart-animation position-absolute top-0 end-0"></div>
                             <Swiper
                                 className='img-content'
