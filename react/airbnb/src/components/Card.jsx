@@ -30,8 +30,8 @@ export default function Card() {
     }
 
     return (
-        <div className='container-fluid'>
-            <div className="container-airbnb row">
+        <div className='container-fluid mt-5 py-5'>
+            <div className="container-airbnb row mt-5 py-5">
                 {
                     acomodacoes.map((acomodacao, index) => (
                         <div key={acomodacao.id} className="position-relative mt-4 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
