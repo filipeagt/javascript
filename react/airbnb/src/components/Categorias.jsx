@@ -17,17 +17,18 @@ import './css/Categorias.css'
 //Importar os dados de categorias
 import { categorias } from '../../backend/dados';
 
-export default function Categorias() {
+export default function Categorias({ changeCat }) {
 
     const [idClicado, setIdClicado] = useState(1);
 
-    const handleClick = (e, id)=>{
-        console.log(`A categoria clicada atual é: ${id}`);
+    const handleClick = (e, id) => {
+        //console.log(`A categoria clicada atual é: ${id}`);
         setIdClicado(id);
+        changeCat(id);
     }
 
     return (
-        <div style={{marginTop: '80px', position: 'fixed', top: '0px', zIndex: 998}} className='bg-white pt-2 container-fluid d-flex align-items-center justify-content-between'>
+        <div style={{ marginTop: '80px', position: 'fixed', top: '0px', zIndex: 998 }} className='bg-white pt-2 container-fluid d-flex align-items-center justify-content-between'>
             <div className="container-airbnb d-flex align-items-center row">
                 <div className="col-sm-11">
                     <Swiper
@@ -79,16 +80,16 @@ export default function Categorias() {
                         }}
                         pagination={false}
                         navigation={true}
-                        modules={[Pagination, Navigation]}                        
+                        modules={[Pagination, Navigation]}
                         className="mySwiper"
                     >
                         {
-                            categorias.map((dados, index)=>(
-                                <SwiperSlide 
-                                key={dados.id} 
-                                virtualIndex={index} 
-                                className={dados.id === idClicado ? 'active' : ''}
-                                onClick={(e)=>handleClick(e, dados.id)}
+                            categorias.map((dados, index) => (
+                                <SwiperSlide
+                                    key={dados.id}
+                                    virtualIndex={index}
+                                    className={dados.id === idClicado ? 'active' : ''}
+                                    onClick={(e) => handleClick(e, dados.id)}
                                 >
                                     <img className='mb-2' src={dados.imagem} />
                                     <span>{dados.titulo}</span>
