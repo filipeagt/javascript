@@ -4,7 +4,7 @@ import ButtonGroup from './ButtonGroup';
 import CardGroup from './CardGroup';
 import './css/ModalFilter.css';
 
-export default function ModalFilter() {
+export default function ModalFilter({ resetFilter, catId, filterByPrice, itens }) {
     return (
         <div className="modal fade" id="filterModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
@@ -17,7 +17,7 @@ export default function ModalFilter() {
                         <section className='px-2 mb-4 border-bottom'>
                             <span className="fs-4 fw-bold">Faixa de preço</span>
                             <p className='text-muted'>Opreço médio por noite é de R$ 730</p>
-                            <PriceSlider min={50} max={2000} step={1} />
+                            <PriceSlider catId={catId} filterByPrice={filterByPrice} min={50} max={2000} step={1} />
                         </section>
                         <section className='px-2 mb-4 border-bottom'>
                             <span className="fs-4 fw-bold">Tipo de lugar</span>
@@ -63,16 +63,16 @@ export default function ModalFilter() {
                         <section className="px-2 mb-5">
                             <span className="fs-4 fw-bold">Tipo de Propriedadde</span>
                             <CardGroup options={[
-                                {icon: 'mdi mdi-home-outline', text: 'Casa'},
-                                {icon: 'mdi mdi-city-variant-outline', text: 'Apartamento'},
-                                {icon: 'mdi mdi-home-import-outline', text: 'Casa de hóspedes'},
-                                {icon: 'mdi mdi-office-building-outline', text: 'Hotel'}
+                                { icon: 'mdi mdi-home-outline', text: 'Casa' },
+                                { icon: 'mdi mdi-city-variant-outline', text: 'Apartamento' },
+                                { icon: 'mdi mdi-home-import-outline', text: 'Casa de hóspedes' },
+                                { icon: 'mdi mdi-office-building-outline', text: 'Hotel' }
                             ]} />
                         </section>
                     </div>
                     <div className="d-flex justify-content-between modal-footer">
-                        <a href="#" className='ps-2 link-dark fw-bold'>Remover Filtros</a>
-                        <button type="button" className="fw-bold px-4 py-3 btn btn-dark" data-bs-dismiss="modal">Mostrar X acomodações</button>
+                        <a href="#" onClick={()=>{resetFilter(catId)}} className='ps-2 link-dark fw-bold' data-bs-dismiss="modal">Remover Filtros</a>
+                        <button type="button" className="fw-bold px-4 py-3 btn btn-dark" data-bs-dismiss="modal">Mostrar {itens.length} acomodações</button>
                     </div>
                 </div>
             </div>

@@ -40,24 +40,43 @@ function App() {
   }, [])
 
   useEffect(() => {
-    console.log(allHouses);
+    // console.log(allHouses);
     filterById(catId);
   }, [allHouses])
 
   useEffect(() => {
-    console.log(filterHouses);
+    // console.log(filterHouses);
   }, [filterHouses])
+
+  useEffect(() => {
+    // console.log('A categoria atual é ' + catId);
+  }, [catId])
 
   const changeCat = (id) => {
     setCatId(id);
     filterById(id);
   }
 
+  //Filtrar por preço
   const filterById = (id) => {
     const novaLista = allHouses.filter((item) => {
       return item.categoria === id;
     })
     setFilterHouses(novaLista);
+  }
+
+  //Filtrar por id da categoria
+  const filterByPrice = (catId, min, max)=>{
+    const novaLista = allHouses.filter((item) => {
+      return item.categoria === catId
+        && item.preco >=  min
+        && item.preco <= max;
+    })
+    setFilterHouses(novaLista);
+  }
+
+  const resetFilter = (id) => {
+    filterById(id);
   }
 
   return (
@@ -79,7 +98,7 @@ function App() {
         :
         <Card dados={filterHouses} />
       }    
-      <ModalFilter />
+      <ModalFilter resetFilter={resetFilter} catId={catId} filterByPrice={filterByPrice} itens={filterHouses} />
     </div>
   )
 }

@@ -35,10 +35,12 @@ export default function PriceSlider(props) {
 
     useEffect(()=>{
         document.getElementById('inputMin').value = min;
+        props.filterByPrice(props.catId, min, max);
     }, [min]);
 
     useEffect(()=>{
         document.getElementById('inputMax').value = max==props.max ? `${max}+` : max;
+        props.filterByPrice(props.catId, min, max);
     }, [max]);
 
     function validacao(e) {
